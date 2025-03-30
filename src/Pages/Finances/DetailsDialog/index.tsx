@@ -1,12 +1,17 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { DialogContent, DialogTitle, Divider, IconButton, Stack } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import { DialogContent, DialogTitle, Divider, IconButton, Stack, Tooltip } from "@mui/material";
 import { LineChart } from "@mui/x-charts/LineChart";
 import type { Currency, Stock } from "api/services/Finance/types";
+import { FinanceVariation } from "../styles";
 import { CustomDialog, DialogChartContainer, DialogInfos } from "./styles";
 export const DetailsDialog = ({
   onClose,
   selectedItem,
 }: { onClose: VoidFunction; selectedItem: Currency | Stock | undefined }) => {
+  const isPositiveVariation = (selectedItem && selectedItem.variation > 0) || false;
+  const updatedIn = new Date().toLocaleString("pt-BR");
+
   return (
     <CustomDialog open={!!selectedItem} onClose={onClose} keepMounted={false}>
       <DialogTitle>
@@ -30,14 +35,26 @@ export const DetailsDialog = ({
                   <b>Compra:</b> {selectedItem?.buy} <b>Venda:</b> {selectedItem?.sell}
                 </>
               )}
+              {selectedItem && "points" in selectedItem && (
+                <>
+                  <b>Pontos:</b> {selectedItem?.points}
+                </>
+              )}
               <b>Variação:</b>
-              {selectedItem?.variation}
+              <FinanceVariation isPositive={isPositiveVariation}>
+                {isPositiveVariation && "+"} {selectedItem?.variation}%
+              </FinanceVariation>
             </p>
-            <small>Atualizado em 30/03/2025, 20:46:00</small>
+            <small>Atualizado em {updatedIn}</small>
           </DialogInfos>
         </Stack>
         <Divider style={{ margin: "22px 0" }} />
-        <h4>Variação hoje</h4>
+        <Stack direction="row" alignItems="center" gap="12px">
+          <h4>Variação hoje</h4>
+          <Tooltip title="Atualmente, a API HG Brasil não retorna dados cruciais para este gráfico em seus planos gratuitos. Portanto, os dados apresentados no gráfico abaixo são fictícios.">
+            <InfoIcon fontSize="small" />
+          </Tooltip>
+        </Stack>
         <DialogChartContainer>
           <LineChart
             xAxis={[

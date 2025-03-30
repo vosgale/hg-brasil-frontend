@@ -23,12 +23,12 @@ a {
 
 body{
   position: relative;
-  max-height: 100vh;
   background-color: ${({ theme }) => theme.colors.background};
   overflow-x: hidden;
   color: ${({ theme }) => theme.colors.text};
   background-repeat: no-repeat;
   background-size: 100%;
+  background-image: linear-gradient(45deg, black, transparent);
   background-position: center;
 
 }
