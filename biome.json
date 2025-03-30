@@ -1,0 +1,42 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+
+  "files": {
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs", "**/*.json", "**/*.jsonc", "**/*.html"],
+    "ignore": ["public/js"],
+    "ignoreUnknown": true
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "attributePosition": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "correctness": {
+        "noUnusedImports": "warn",
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn"
+      },
+      "performance": {},
+      "style": {
+        "useImportType": "warn",
+        "useFilenamingConvention": {
+          "level": "warn",
+          "options": {
+            "filenameCases": ["kebab-case"]
+          }
+        }
+      },
+      "recommended": true
+    }
+  }
+}
