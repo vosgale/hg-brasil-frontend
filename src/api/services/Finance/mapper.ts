@@ -1,4 +1,5 @@
 import { IMAGES } from "Assets/Images/Images";
+import { formatCurrencyBRL } from "utils/currency";
 import type { ApiResponse, FinanceData } from "./types";
 
 const generateFakeVariationData = (variation: number, baseValue: number) => {
@@ -32,6 +33,7 @@ export const getFinanceDataMapper = (data: ApiResponse): FinanceData => {
       .map(([key, value]) => ({
         ...value,
         key,
+        value: `${value.points} pontos`,
         image: IMAGES.financeIcons.ENTERPRISE || "",
         chartData: {
           x: generateDynamicHours(),
@@ -44,6 +46,7 @@ export const getFinanceDataMapper = (data: ApiResponse): FinanceData => {
       .map(([key, value]) => ({
         ...value,
         key,
+        value: formatCurrencyBRL(value.buy),
         image: IMAGES.financeIcons[key as keyof typeof IMAGES.financeIcons] || IMAGES.financeIcons.money,
         chartData: {
           x: generateDynamicHours(),

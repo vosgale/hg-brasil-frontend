@@ -14,9 +14,10 @@ export interface Currencies {
 
 export interface Currency {
   name: string;
-  buy: number;
+  value: string;
   sell: number | null;
   key: string;
+  buy: number;
   variation: number;
   chartData: {
     x: string[];
@@ -36,6 +37,7 @@ export interface Stock {
     x: string[];
     y: number[];
   };
+  value: string;
   points: number;
   key: string;
   image: string;
