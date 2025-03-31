@@ -3,8 +3,8 @@ import { useRef } from "react";
 import { useOutlet } from "react-router-dom";
 import { useAuthStore } from "store/auth-store";
 
-import { Avatar, Stack } from "@mui/material";
 import { IMAGES } from "Assets/Images/Images";
+import { UserMenu } from "./Components/Menu";
 import { ChildrenContainer, PageContent, PageHeader } from "./styles";
 
 const SystemLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -15,10 +15,9 @@ const SystemLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   return (
     <PageContent>
       <PageHeader $isAtTop={isAtTop}>
-        <img src={IMAGES.logo} alt="logotipo" />
-        <Stack direction="row" alignItems="center" gap="12px">
-          Bem vindo, Fernando <Avatar>F</Avatar>
-        </Stack>
+        <img className="desktop-logo" src={IMAGES.logo} alt="logotipo" />
+        <img className="mobile-logo" src={IMAGES.mobileLogo} alt="logotipo" />
+        <UserMenu />
       </PageHeader>
       <ChildrenContainer>{children}</ChildrenContainer>
     </PageContent>

@@ -5,6 +5,9 @@ export const MainContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(400px, 3fr));
   gap: 22px;
   padding: 22px 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+   grid-template-columns: auto;
+  }
 `;
 
 export const FinanceVariation = styled.p<{ isPositive: boolean }>`

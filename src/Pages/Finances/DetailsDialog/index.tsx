@@ -8,8 +8,11 @@ import { CustomDialog, DialogChartContainer, DialogInfos } from "./styles";
 export const DetailsDialog = ({
   onClose,
   selectedItem,
-}: { onClose: VoidFunction; selectedItem: Currency | Stock | undefined }) => {
-  const isPositiveVariation = (selectedItem && selectedItem.variation > 0) || false;
+}: {
+  onClose: VoidFunction;
+  selectedItem: Currency | Stock | undefined;
+}) => {
+  const isPositiveVariation = (selectedItem && selectedItem.variation >= 0) || false;
   const updatedIn = new Date().toLocaleString("pt-BR");
 
   return (
@@ -23,7 +26,7 @@ export const DetailsDialog = ({
         </Stack>
       </DialogTitle>
       <DialogContent>
-        <Stack direction="row" alignItems="center" gap="22px">
+        <Stack direction="row" alignItems="center" gap="22px" flexWrap="wrap">
           <img src={selectedItem?.image} alt={`${selectedItem?.key} representation `} />
           <DialogInfos>
             <h3>
@@ -51,11 +54,14 @@ export const DetailsDialog = ({
         <Divider style={{ margin: "22px 0" }} />
         <Stack direction="row" alignItems="center" gap="12px">
           <h4>Variação hoje</h4>
-          <Tooltip title="Atualmente, a API HG Brasil não retorna dados cruciais para este gráfico em seus planos gratuitos. Portanto, os dados apresentados no gráfico abaixo são fictícios.">
+          <Tooltip
+            title="Atualmente, a API HG Brasil não retorna dados cruciais 
+             para este gráfico em seus planos gratuitos. Portanto, os dados apresentados no gráfico abaixo são fictícios."
+          >
             <InfoIcon fontSize="small" />
           </Tooltip>
         </Stack>
-        <DialogChartContainer>
+        <DialogChartContainer isPositive={isPositiveVariation}>
           <LineChart
             xAxis={[
               {
@@ -68,9 +74,12 @@ export const DetailsDialog = ({
                 data: selectedItem?.chartData.y || [],
                 curve: "linear",
                 showMark: false,
+                color: isPositiveVariation ? "#02d5d1" : "#BC3D5D",
+                label: "Valor",
                 area: true,
               },
             ]}
+            slotProps={{ legend: { hidden: true } }}
             grid={{ horizontal: true }}
           />
         </DialogChartContainer>

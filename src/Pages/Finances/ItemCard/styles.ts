@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  background: #111820;
+  background: ${({ theme }) => theme.colors.cardBackground};
   padding: 16px 22px;
   min-height: 160px;
   border-radius: 8px;
-  text-align: center;
+  text-align: start;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -34,10 +34,21 @@ export const Card = styled.div`
       color: ${({ theme }) => theme.colors.opaqueText};
     }
     img {
-      width: 100px;
-      height: 100px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       object-fit: cover;
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.ultraMobile}) {
+    padding: 16px;
+    img {
+      display: none;
+    }
+    .content {
+      p {
+        font-size: 16px;
+      }
     }
   }
 `;

@@ -1,6 +1,7 @@
 // eslint-disable-next-line react-refresh/only-export-components
 export const IMAGES = {
   logo: new URL("./franq-logo.svg", import.meta.url).href,
+  mobileLogo: new URL("./franq-logo-mobile.svg", import.meta.url).href,
   financeIcons: {
     USD: new URL("./FinanceIcons/eua.png", import.meta.url).href,
     EUR: new URL("./FinanceIcons/EUR.svg", import.meta.url).href,

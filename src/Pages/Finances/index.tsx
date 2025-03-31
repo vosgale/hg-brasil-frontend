@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import { DetailsDialog } from "./DetailsDialog";
 import { ItemCard } from "./ItemCard";
 import { MainContainer } from "./styles";
@@ -5,7 +6,7 @@ import { useFinances } from "./useFinances";
 
 export const Finances = () => {
   const { data, selectedItem, setSelectedItem } = useFinances();
-  if (!data) return <>carregando</>;
+  if (!data) return <CircularProgress />;
   return (
     <MainContainer>
       <DetailsDialog selectedItem={selectedItem} onClose={() => setSelectedItem(undefined)} />

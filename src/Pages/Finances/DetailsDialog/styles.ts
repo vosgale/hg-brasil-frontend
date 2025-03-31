@@ -32,18 +32,23 @@ p{
   display: flex;
   gap: 12px;
   font-size: 0.9rem;
+  flex-wrap: wrap;
 }
 small{
   color: ${({ theme }) => theme.colors.opaqueText};
 }
 `;
 
-export const DialogChartContainer = styled.div`
+export const DialogChartContainer = styled.div<{ isPositive: boolean }>`
 width: 100%;
 height: 300px;
 display: flex;
 justify-content: center;
 .MuiAreaElement-root{
-  fill: #02d5d11c;
+  fill:  ${({ isPositive }) => (isPositive ? "#02d5d11c" : "#ff000026")};
+}
+.MuiLineElement-root {
+  stroke:  ${({ isPositive }) => (isPositive ? "#02d5d1" : "#BC3D5D")};
+  stroke-width: 2px; 
 }
 `;

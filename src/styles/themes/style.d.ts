@@ -12,6 +12,7 @@ declare module "styled-components" {
     breakpoints: {
       tablet: string;
       mobile: string;
+      ultraMobile: string;
     };
   }
 }

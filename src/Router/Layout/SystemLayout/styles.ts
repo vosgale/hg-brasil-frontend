@@ -13,6 +13,9 @@ export const PageContent = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 6vh 32px 0;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.ultraMobile}) {
+    padding: 6vh 6px 0;
+  }
 `;
 
 export const PageHeader = styled.header<{ $isAtTop: boolean }>`
@@ -29,9 +32,14 @@ export const PageHeader = styled.header<{ $isAtTop: boolean }>`
   transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   margin-bottom: 12vh;
-  img{
+
+  .desktop-logo {
     width: 216px;
   }
+  .mobile-logo {
+    display: none;
+  }
+
   h6 {
     font-size: 1.9rem;
     font-weight: 600;
@@ -39,9 +47,19 @@ export const PageHeader = styled.header<{ $isAtTop: boolean }>`
   .mobile-menu-button {
     display: none;
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     .mobile-menu-button {
       display: flex;
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    .desktop-logo {
+      display: none;
+    }
+    .mobile-logo {
+      width: 40px;
+      display: block;
     }
   }
 `;
