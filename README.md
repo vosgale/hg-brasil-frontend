@@ -1,6 +1,6 @@
 # Projeto React + Vite
 
-Este projeto utiliza **React**, **Vite** e **Node.js 20**.
+Este projeto utiliza **React**, **Vite** e **Node.js 20**. 
 
 ## Como rodar o projeto
 
@@ -9,14 +9,11 @@ Este projeto utiliza **React**, **Vite** e **Node.js 20**.
    yarn
    ```
 
-2. Crie um arquivo `.env` na raiz do projeto:
-   ```sh
-   cp .env.example .env
-   ```
+2. Copie o arquivo `.env.example` para `.env`.
 
 3. Edite o `.env` e adicione a seguinte chave:
    ```env
-   VITE_API_KEY=7bdbe493
+   API_KEY=7bdbe493
    ```
    **Nota:** Essa chave está aqui apenas para fins de teste. Em um projeto real, nunca compartilharíamos chaves sensíveis no README ou no repositório.
 
