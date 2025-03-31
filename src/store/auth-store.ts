@@ -1,27 +1,18 @@
-import type { IAuthenticatedUser, LoginResponse } from "api/services/Register/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+import type { IAuthState, ILoginInfos } from "./types";
 
-interface AuthState {
-  token: string | null;
-  isAuthenticated: boolean;
-  user: IAuthenticatedUser | null;
-  login: (userInfos: LoginResponse) => void;
-  logout: () => void;
-}
-
-export const useAuthStore = create<AuthState>()(
+export const useAuthStore = create<IAuthState>()(
   persist(
     (set) => ({
       token: null,
       user: null,
       isAuthenticated: false,
-      network: null,
-      login: (userInfos: LoginResponse) => {
+      login: (userInfos: ILoginInfos) => {
         set({
-          token: userInfos.accessToken,
+          token: userInfos.token,
           isAuthenticated: true,
-          user: userInfos.user,
+          user: userInfos.name,
         });
       },
       logout: () => {

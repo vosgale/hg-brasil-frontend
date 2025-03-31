@@ -1,6 +1,6 @@
 import useScrollTopLimit from "hooks/useScrollTopLimit";
 import { useRef } from "react";
-import { useOutlet } from "react-router-dom";
+import { Navigate, useOutlet } from "react-router-dom";
 import { useAuthStore } from "store/auth-store";
 
 import { IMAGES } from "Assets/Images/Images";
@@ -12,6 +12,9 @@ const SystemLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   const isAtTop = useScrollTopLimit(scrollRef);
   const { isAuthenticated } = useAuthStore();
 
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
   return (
     <PageContent>
       <PageHeader $isAtTop={isAtTop}>
