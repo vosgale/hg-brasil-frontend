@@ -7,7 +7,7 @@ import { MenuContainer } from "./styles";
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { logout } = useAuthStore();
+  const { logout, user } = useAuthStore();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -18,7 +18,7 @@ export const UserMenu = () => {
   return (
     <MenuContainer>
       <Stack direction="row" alignItems="center">
-        <p className="welcome-text">Bem vindo, Fernando</p>
+        <p className="welcome-text">Bem vindo, {user}</p>
         <IconButton
           onClick={handleClick}
           size="small"
@@ -26,7 +26,16 @@ export const UserMenu = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 38, height: 38, backgroundColor: "#687bea", color: "#fff" }}>F</Avatar>
+          <Avatar
+            sx={{
+              width: 38,
+              height: 38,
+              backgroundColor: "#687bea",
+              color: "#fff",
+            }}
+          >
+            {user?.[0] || ""}
+          </Avatar>
         </IconButton>
       </Stack>
 
@@ -35,7 +44,9 @@ export const UserMenu = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        TransitionComponent={Grow}
+        slots={{
+          transition: Grow,
+        }}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "center",

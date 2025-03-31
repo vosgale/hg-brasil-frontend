@@ -1,5 +1,17 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, keyframes } from "styled-components";
 
+const backgroundAnimation = keyframes`
+0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+
+`;
 export default createGlobalStyle`
 *{
   margin: 0;
@@ -10,6 +22,7 @@ export default createGlobalStyle`
     ::-webkit-scrollbar { display: none; }
   }
 }
+
 
 input,
 textarea,
@@ -28,8 +41,15 @@ body{
   color: ${({ theme }) => theme.colors.text};
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: linear-gradient(45deg, black, transparent);
+  background-image: linear-gradient(45deg, #000000a6, transparent);
+  background-size: 300% 300%;
   background-position: center;
+  animation: ${backgroundAnimation} 15s ease-in-out infinite;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    background-size: 300% 150%;
+    animation: ${backgroundAnimation} 15s ease infinite;
+
+  }
 
 }
 

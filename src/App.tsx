@@ -22,7 +22,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Router />
-            <ToastContainer transition={Slide} autoClose={2000} />
+            <ToastContainer transition={Slide} theme="dark" autoClose={2000} />
           </BrowserRouter>
         </QueryClientProvider>
       </MuiThemeProvider>

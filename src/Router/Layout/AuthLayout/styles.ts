@@ -21,11 +21,21 @@ export const LogoContainer = styled(motion.div)`
   justify-content: start;
   margin-bottom: 16px;
   img {
-    width: 20vw;
+    width: clamp(400px, 30vw, 400px);
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    img {
+      width: 100%;
+      padding: 0 16px;
+    }
   }
 `;
 
 export const ContentContainer = styled(motion.div)`
-  width: 450px;
+  width: clamp(400px, 50vw, 470px);
   position: relative;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%;
+    padding: 0 16px;
+  }
 `;

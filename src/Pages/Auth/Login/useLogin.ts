@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuthStore } from "store/auth-store";
 import type { loginFormType } from "./validation-schema";
 
@@ -18,13 +19,19 @@ export const useLogin = () => {
       const user = users.find((user: { email: string; name: string; password: string }) => user.email === data.email);
 
       if (!user) {
-        console.error("Erro: Usuário não encontrado!");
+        toast.error("Erro: Usuário não encontrado!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
         setIsLoading(false);
         return;
       }
 
       if (user.password !== data.password) {
-        console.error("Erro: Senha incorreta!");
+        toast.error("Erro: Senha incorreta!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
         setIsLoading(false);
         return;
       }
@@ -38,6 +45,10 @@ export const useLogin = () => {
 
       login({ email: user.email, name: user.name, token });
       navigate("/");
+      toast.success("Login efetuado: Bem vindo!", {
+        position: "top-right",
+        autoClose: 2000,
+      });
 
       setIsLoading(false);
     }, 2000);

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuthStore } from "store/auth-store";
 import type { RegisterFormType } from "./validation-schema";
 
@@ -27,7 +28,10 @@ export const useRegister = () => {
       const userExists = users.some((user) => user.email === data.email);
 
       if (userExists) {
-        console.error("Erro: Email já cadastrado!");
+        toast.error("Erro: Email já cadastrado!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
         setIsLoading(false);
         return;
       }
@@ -40,7 +44,10 @@ export const useRegister = () => {
       localStorage.setItem("@users", JSON.stringify(users));
 
       const token = generateFakeToken(data.email, data.name);
-
+      toast.success("Cadastro efetuado: Bem vindo!", {
+        position: "top-right",
+        autoClose: 2000,
+      });
       setIsLoading(false);
 
       login({ email: data.email, name: data.name, token: token });
