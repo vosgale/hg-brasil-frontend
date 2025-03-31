@@ -1,6 +1,6 @@
 # Projeto React + Vite
 
-Este projeto utiliza **React**, **Vite** e **Node.js 20**. 
+Este projeto utiliza **React**, **Vite** e **Node.js 20**.
 
 ## Como rodar o projeto
 
@@ -21,4 +21,8 @@ Este projeto utiliza **React**, **Vite** e **Node.js 20**.
    ```sh
    yarn dev
    ```
+
+## Aviso sobre a API de Finanças do HG Brasil
+
+A API de Finanças do HG Brasil, em seus planos gratuitos, não fornece dados suficientes para a construção dos gráficos do projeto. Portanto, os gráficos utilizam dados fictícios para fins de demonstração.
 
