@@ -13,7 +13,7 @@ export const ItemCard = ({ item, onSelect }: { item: Currency | Stock; onSelect:
         </Stack>
         <img src={item.image} alt={`${item.key} representation `} />
       </div>
-      <FinanceVariation isPositive={item.variation >= 0}>
+      <FinanceVariation $isPositive={item.variation >= 0}>
         {item.value} {item.variation}%
       </FinanceVariation>
     </Card>

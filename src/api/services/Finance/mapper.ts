@@ -33,7 +33,7 @@ export const getFinanceDataMapper = (data: ApiResponse): FinanceData => {
       .map(([key, value]) => ({
         ...value,
         key,
-        value: `${value.points} pontos`,
+        value: `${value.points} Pontos`,
         image: IMAGES.financeIcons.ENTERPRISE || "",
         chartData: {
           x: generateDynamicHours(),

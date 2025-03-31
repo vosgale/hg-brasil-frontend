@@ -44,7 +44,7 @@ export const DetailsDialog = ({
                 </>
               )}
               <b>Variação:</b>
-              <FinanceVariation isPositive={isPositiveVariation}>
+              <FinanceVariation $isPositive={isPositiveVariation}>
                 {isPositiveVariation && "+"} {selectedItem?.variation}%
               </FinanceVariation>
             </p>

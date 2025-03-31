@@ -10,7 +10,7 @@ export const MainContainer = styled.div`
   }
 `;
 
-export const FinanceVariation = styled.p<{ isPositive: boolean }>`
+export const FinanceVariation = styled.p<{ $isPositive: boolean }>`
   font-weight: 500;
-  color: ${({ isPositive }) => (isPositive ? "#DCFF79" : "#BC3D5D")};
+  color: ${({ $isPositive }) => ($isPositive ? "#DCFF79" : "#BC3D5D")};
 `;
